@@ -16,7 +16,7 @@ class Datation(TimeStampedModel):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     deleted = models.BooleanField(default=False)
     objects = DeletableManager()
-    h_objecs = models.Manager()
+    h_objects = models.Manager()
 
     class Meta:
         abstract = True
