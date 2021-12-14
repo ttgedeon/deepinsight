@@ -1,0 +1,7 @@
+{% extends 'books/base.html' %}
+{% block title %} HomePage {% endblock title %}
+{% block content %}
+    <h3>BookStore Collections</h3>
+    <a href="{% url 'books:authors' %}" role="button" class="btn btn-primary w-100 mb-2">All Authors</a>
+    <a href="{{ url }}" role="button" class="btn btn-secondary">Add and Author</a>
+{% endblock %}
