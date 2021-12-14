@@ -5,7 +5,7 @@ from common.models import Datation
 
 class Author(Datation):
 
-    name = models.CharField(max_length=255, null=False, blank=False)
+    name = models.CharField(max_length=128, null=False, blank=False)
 
     def __str__(self):
         return self.name
