@@ -14,7 +14,7 @@ class DeletableManager(models.Manager):
 
 class Datation(TimeStampedModel):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    deleted = models.BooleanField(default=False)
+    deleted = models.BooleanField(default=False, editable=False)
     objects = DeletableManager()
     h_objects = models.Manager()
 

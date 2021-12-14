@@ -1,4 +1,6 @@
 from django.db import models
+from django.urls import reverse
+
 from common.models import Datation
 # Create your models here.
 
@@ -6,6 +8,9 @@ from common.models import Datation
 class Author(Datation):
 
     name = models.CharField(max_length=128, null=False, blank=False)
+
+    def get_absolute_url(self):
+        return reverse('books:author_detail', kwargs={'pk': self.id})
 
     def __str__(self):
         return self.name
