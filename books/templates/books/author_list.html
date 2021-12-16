@@ -12,7 +12,7 @@
 
            {% for author in authors_list %}
                 <li class="list-group-item">
-                    <a class="text-reset" href={% url 'books:author_detail' author.id %}>{{ author.name }}</a>
+                    <a class="text-reset" href="{{ author.get_absolute_url }}">{{ author.name }}</a>
                 </li>
             {% endfor %}
         </ul>
