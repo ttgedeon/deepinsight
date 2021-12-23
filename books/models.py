@@ -6,6 +6,9 @@ from common.models import Datation
 
 
 class Author(Datation):
+    """
+    The author model Docstring
+    """
 
     name = models.CharField(max_length=128, null=False, blank=False)
 
@@ -17,6 +20,9 @@ class Author(Datation):
 
 
 class Book(Datation):
+    """
+    The book model Docstring
+    """
     title = models.CharField(null=False, blank=False, max_length=255)
     author = models.ForeignKey(Author, null=False, blank=False, on_delete=models.PROTECT,
                                related_name='author_books')
