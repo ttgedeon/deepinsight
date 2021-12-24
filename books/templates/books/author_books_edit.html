@@ -23,6 +23,7 @@
 
             <h5>
                 {% if book_form.instance.id %}
+                    <p>{{ book_form.instance.id }}</p>
                     Book: {{ Book_form.instance.title|title }}
                 {% else %}
                     {% if form.forms|length > 1 %}
