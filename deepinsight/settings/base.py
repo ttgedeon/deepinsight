@@ -19,7 +19,7 @@ import locale
 config.encoding = locale.getpreferredencoding(True)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -28,12 +28,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config("DEBUG", cast=bool, default=False)
+
 TEMPLATE_DEBUG = DEBUG
 
-ALLOWED_HOSTS = config("ALLOWED_HOSTS", default='127.0.0.1, localhost', cast=Csv())
-
+ALLOWED_HOSTS = config("ALLOWED_HOSTS", default='localhost', cast=Csv())
+print(ALLOWED_HOSTS, 'are the allowed host names')
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -41,7 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'books',
+
+    'books.apps.BooksConfig',
+    'authentication.apps.AuthenticationConfig',
     'common',
 ]
 
@@ -120,7 +122,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
-    BASE_DIR / 'books/static'
+    'books/static'
 ]
 STATIC_ROOT = BASE_DIR / 'static'
 
@@ -131,3 +133,13 @@ MEDIA_URL = 'media/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",
+]
+
+
+LOGIN_REDIRECT_URL = '/books'
+LOGIN_URL = '/account/login'
+LOGOUT_URL = '/account/logout'
+LOGOUT_REDIRECT_URL = '/books'
